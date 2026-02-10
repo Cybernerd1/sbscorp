@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const clients = [
   "BIO-RAD", "ADIENT", "METROPOLITAN", "BOEING", "Unilever", "Western Digital",
@@ -26,14 +26,14 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
+  visible: {
+    opacity: 1,
+    y: 0,
     scale: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 100,
       damping: 15
     }
@@ -57,7 +57,7 @@ export default function TrustedBySection() {
           </h2>
           <div className="w-16 h-1 bg-orange-500 mx-auto mb-6 rounded-full" />
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            From Fortune 500 companies to innovative startups, we partner with organizations across 
+            From Fortune 500 companies to innovative startups, we partner with organizations across
             industries to deliver transformative solutions that drive real business results.
           </p>
         </motion.div>
@@ -74,8 +74,8 @@ export default function TrustedBySection() {
             <motion.div
               key={idx}
               variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 y: -5,
                 boxShadow: "0 10px 40px rgba(249, 115, 22, 0.15)"
               }}
@@ -83,7 +83,7 @@ export default function TrustedBySection() {
             >
               {/* Hover Gradient */}
               <div className="absolute inset-0 bg-linear-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/5 group-hover:to-transparent transition-all duration-500" />
-              
+
               <div className="relative z-10 text-center">
                 <span className="text-xs font-medium text-gray-400 group-hover:text-white transition-colors duration-300">
                   {client}

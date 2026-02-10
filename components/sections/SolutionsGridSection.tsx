@@ -1,20 +1,20 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { 
-  Brain, 
-  LineChart, 
-  Zap, 
-  Factory, 
-  Settings, 
-  Layers, 
-  Cpu, 
-  Server, 
-  Cloud, 
-  BarChart3, 
-  Wallet, 
-  Database 
+import {
+  Brain,
+  LineChart,
+  Zap,
+  Factory,
+  Settings,
+  Layers,
+  Cpu,
+  Server,
+  Cloud,
+  BarChart3,
+  Wallet,
+  Database
 } from "lucide-react";
 
 const solutions = [
@@ -102,14 +102,14 @@ const containerVariants = {
   }
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
+  visible: {
+    opacity: 1,
+    y: 0,
     scale: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 100,
       damping: 15
     }
@@ -128,7 +128,7 @@ export default function SolutionsGridSection() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -137,20 +137,20 @@ export default function SolutionsGridSection() {
           >
             That&apos;s where we come in.
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-gray-400 text-lg max-w-3xl"
           >
-            We help businesses transform, grow and succeed in an ever-changing landscape by providing 
+            We help businesses transform, grow and succeed in an ever-changing landscape by providing
             expert advice and innovative solutions tailored to your unique challenges.
           </motion.p>
         </motion.div>
 
         {/* Solutions Grid */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -161,8 +161,8 @@ export default function SolutionsGridSection() {
             <motion.div
               key={idx}
               variants={cardVariants}
-              whileHover={{ 
-                y: -8, 
+              whileHover={{
+                y: -8,
                 scale: 1.02,
                 boxShadow: "0 20px 60px rgba(249, 115, 22, 0.15)",
                 borderColor: "rgba(249, 115, 22, 0.3)"
@@ -170,33 +170,33 @@ export default function SolutionsGridSection() {
               className="group relative p-6 bg-zinc-900/50 hover:bg-zinc-900/80 rounded-2xl border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden"
             >
               {/* Hover Gradient */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
                 className="absolute inset-0 bg-linear-to-br from-orange-500/5 via-transparent to-transparent pointer-events-none"
               />
-              
+
               {/* Icon */}
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="relative z-10 w-12 h-12 mb-5 flex items-center justify-center text-orange-500"
               >
                 <solution.icon className="w-8 h-8" strokeWidth={1.5} />
               </motion.div>
-              
+
               {/* Title */}
               <h3 className="relative z-10 text-lg font-semibold text-white mb-3 group-hover:text-orange-500 transition-colors duration-300">
                 {solution.title}
               </h3>
-              
+
               {/* Description */}
               <p className="relative z-10 text-gray-400 text-sm leading-relaxed mb-5 group-hover:text-gray-300 transition-colors duration-300">
                 {solution.description}
               </p>
-              
+
               {/* Link */}
-              <Link 
+              <Link
                 href={solution.href}
                 className="relative z-10 inline-flex items-center gap-2 text-orange-500 text-sm font-medium group-hover:gap-3 transition-all duration-300"
               >
